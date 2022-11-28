@@ -19,7 +19,7 @@ import (
 // expiryDelta determines how earlier a token should be considered
 // expired than its actual expiration time. It is used to avoid late
 // expirations due to client-server time mismatches.
-const expiryDelta = 10 * time.Second
+var ExpiryDelta = 10 * time.Second
 
 // Token represents the credentials used to authorize
 // the requests to access protected resources on the OAuth 2.0
@@ -127,7 +127,7 @@ func (t *Token) expired() bool {
 	if t.Expiry.IsZero() {
 		return false
 	}
-	return t.Expiry.Round(0).Add(-expiryDelta).Before(timeNow())
+	return t.Expiry.Round(0).Add(-ExpiryDelta).Before(timeNow())
 }
 
 // Valid reports whether t is non-nil, has an AccessToken, and is not expired.
