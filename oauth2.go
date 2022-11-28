@@ -17,7 +17,7 @@ import (
 	"strings"
 	"sync"
 
-	"golang.org/x/oauth2/internal"
+	"github.com/davidcoles/oauth2/internal"
 )
 
 // NoContext is the default context you should supply if not using
